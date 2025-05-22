@@ -1,0 +1,388 @@
+/*
+
+/* ========================================= */
+/* ESTILOS DEL CARRUSEL/SLIDER */
+/* ========================================= */
+
+.carousel-section {
+    margin-bottom: 30px; /* Espacio debajo de la sección del carrusel */
+}
+
+.carousel-section h2 {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.carousel-container {
+    width: 100%;
+    overflow: hidden; /* Esto es CRÍTICO para ocultar los slides que no están visibles */
+    position: relative;
+    border-radius: 10px; /* Bordes redondeados para el carrusel */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1); /* Sombra suave */
+    background-color: #fac6ed; /* Fondo para el contenedor si hay espacio */
+}
+
+.carousel-slide-wrapper {
+    display: flex; /* Permite que los items se alineen en una fila */
+    width: fit-content; /* El ancho se ajusta al contenido (todos los slides) */
+    animation: carousel-slide 40s infinite linear; /* Animación de desplazamiento */
+    /* Pausar la animación al pasar el ratón */
+    animation-play-state: running; /* Por defecto corriendo */
+}
+
+.carousel-slide-wrapper:hover {
+    animation-play-state: paused; /* Pausar al hacer hover */
+}
+
+
+.carousel-item {
+    min-width: 100%; /* Cada item ocupa el 100% del ancho del contenedor en su estado base */
+    flex-shrink: 0; /* Evita que los items se encojan */
+    position: relative;
+    text-align: center;
+    background-color: #070707; /* Fondo para cada item */
+    padding-bottom: 40px; /* Espacio para el caption */
+}
+
+.carousel-item img {
+    width: 100%;
+    height: auto;
+    display: block; /* Elimina espacio extra debajo de la imagen */
+    border-radius: 10px 10px 0 0; /* Redondea solo las esquinas superiores */
+}
+
+.slide-caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.6); /* Fondo semi-transparente para el texto */
+    color: #fac6ed;
+    padding: 10px 0;
+    font-size: 1.1em;
+    font-weight: bold;
+    border-radius: 0 0 10px 10px; /* Redondea solo las esquinas inferiores */
+}
+
+/* Animación del carrusel (KEYFRAMES) */
+@keyframes carousel-slide {
+    0% { transform: translateX(0%); } /* Empieza sin desplazamiento */
+    100% { transform: translateX(calc(-100% * 12)); } /* Desplaza 4 items (ajústalo según tu número total de items - si tienes 6 items, y 2 son duplicados, serían 4 items reales) */
+}
+
+/* Media Query para responsividad en móviles */
+@media (max-width: 767px) {
+    .carousel-item {
+        min-width: 100%; /* Cada item sigue ocupando todo el ancho */
+    }
+    .carousel-item img {
+        height: 250px; /* Altura fija para imágenes en móviles, ajusta si es necesario */
+        object-fit: cover; /* Recorta la imagen para que quepa */
+    }
+    .slide-caption {
+        font-size: 0.9em;
+        padding: 8px 0;
+    }
+    /* Reajustar la animación si cambias el número de items visibles */
+    @keyframes carousel-slide {
+        100% { transform: translateX(calc(-100% * 12)); } /* Ajustar según tu número de items reales */
+    }
+}
+/* ========================================= */
+/* VARIABLES CSS (DEFINIDAS EN :ROOT) */
+/* ========================================= */
+:root {
+    --wrapper-max-width: 1000px; /* Tu ancho máximo deseado para el contenido */
+    --butterfly-background-width: 300px; /* Ancho que ocupará cada imagen de mariposa en el fondo */
+    --wrapper-horizontal-padding: 200px; /* Tu padding horizontal deseado para el wrapper */
+
+    /* Colores y otras variables */
+    --body-bg-color: hsl(189, 82%, 74%); /* Un tono beige suave */
+    --text-color: #333;
+    --wrapper-bg-color: #fac6ed;
+    --shadow-color: rgba(0, 0, 0, 0.1);
+
+    --nav-bar-bg-color: rgb(162, 170, 245);
+    --nav-link-hover-color: rgb(255, 0, 234);
+
+    --heading-color: #a031f5;
+    --secondary-heading-color: #0d11dd;
+    --price-color: #070707;
+    --contact-link-color: #00a6ed;
+}
+
+/* ========================================= */
+/* ESTILOS GLOBALES Y RESET */
+/* ========================================= */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-size: 16px; /* Base para rem */
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: var(--body-bg-color); /* Usamos la variable */
+    color: var(--text-color);
+    line-height: 1.6;
+    overflow-x: hidden; /* Evita scroll horizontal no deseado */
+    position: relative; /* Necesario para que pseudo-elementos fixed se referencien al body */
+    min-height: 100vh; /* Asegura que el body ocupe al menos toda la altura de la ventana */
+}
+
+/* ========================================= */
+/* BARRA DE NAVEGACIÓN */
+/* ========================================= */
+.mi-barra-de-navegacion {
+    background-color: var(--nav-bar-bg-color);
+    padding: 10px 0; /* Padding que tenías en las últimas definiciones */
+    width: 90%; /* Ancho que tenías en las últimas definiciones */
+    max-width: var(--wrapper-max-width);
+    margin: 0 auto 1.5rem auto; /* Centrada y con margen inferior */
+    position: relative; /* Asegura que esté sobre los fondos */
+    z-index: 3;
+    display: flex;
+    justify-content: space-between; /* Manteniendo space-between para logo a un lado y enlaces a otro */
+    align-items: center;
+    box-shadow: 0 2px 5px var(--shadow-color);
+}
+
+.mi-barra-de-navegacion ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Centra los elementos horizontalmente si hay espacio */
+}
+
+.mi-barra-de-navegacion li {
+    margin: 0 15px; /* Espacio entre los elementos de la lista */
+}
+
+.mi-barra-de-navegacion a {
+    text-decoration: none;
+    color: var(--text-color);
+    padding: 8px 12px;
+    white-space: nowrap; /* Evita que los enlaces se rompan en varias líneas */
+}
+
+.mi-barra-de-navegacion a:hover {
+    color: var(--nav-link-hover-color);
+}
+
+.mi-barra-de-navegacion a.active {
+    font-weight: bold;
+}
+
+.mi-barra-de-navegacion .logo-inicio {
+    padding: 0;
+    margin-right: 1.5rem; /* Espacio entre el logo y el primer enlace */
+}
+
+.mi-barra-de-navegacion .logo-inicio img {
+    height: 170px; /* Altura del logo */
+    vertical-align: middle;
+    border: none;
+}
+
+
+/* ========================================= */
+/* CONTENEDOR PRINCIPAL (WRAPPER) */
+/* ========================================= */
+.wrapper {
+    width: 90%; /* Ancho que tenías en las últimas definiciones */
+    max-width: var(--wrapper-max-width);
+    margin: 0 auto; /* Centra el contenedor */
+    background-color: var(--wrapper-bg-color);
+    box-shadow: 0 0 10px var(--shadow-color);
+    padding: var(--wrapper-horizontal-padding); /* Usamos la variable */
+    position: relative; /* Para su z-index */
+    z-index: 2; /* Asegura que el contenido esté encima de las mariposas */
+    min-height: calc(100vh - 100px); /* Ajusta si tienes footer o header */
+}
+
+/* ========================================= */
+/* FONDOS DE MARIPOSAS CON PSEUDO-ELEMENTOS */
+/* ========================================= */
+
+/* Pseudo-elemento para la mariposa del lado izquierdo */
+body::before {
+    content: "";
+    position: fixed; /* Se mantiene fija al scroll */
+    top: left;
+    /* Posicionamiento a la izquierda del wrapper central */
+    left: calc(50% - (var(--wrapper-max-width) / 2) - var(--butterfly-background-width));
+    width: var(--butterfly-background-width); /* Ancho definido por la variable */
+    height: 1000%; /* Cubre toda la altura de la ventana */
+    background-image: url('images/Mariposas.jpeg'); /* Ruta a tu imagen de mariposas */
+    background-repeat: no-repeat; /* ¡NO REPETIR LA IMAGEN! */
+    background-position: left top; /* Posiciona la imagen al inicio del pseudo-elemento */
+    background-size: cover; /* Ajusta la imagen completa sin recortar. Usa 'cover' si quieres que siempre ocupe el espacio completo */
+    z-index: 1; /* Estará entre el body y el wrapper */
+    pointer-events: none; /* No bloquea clics */
+    opacity: 0.8;
+    display: none; /* Oculto por defecto en pantallas pequeñas */
+}
+
+/* Pseudo-elemento para la mariposa del lado derecho (efecto espejo) */
+body::after {
+    content: "";
+    position: fixed; /* Se mantiene fija al scroll */
+    top: 0;
+    /* Posicionamiento a la derecha del wrapper central */
+    right: calc(50% - (var(--wrapper-max-width) / 2) - var(--butterfly-background-width));
+    width: var(--butterfly-background-width); /* Ancho definido por la variable */
+    height: 100%; /* Cubre toda la altura de la ventana */
+    background-image: url('images/Mariposas_2.jpeg'); /* Usamos Mariposas_2.jpeg que ya tienes volteada */
+    background-repeat: no-repeat; /* ¡NO REPETIR LA IMAGEN! */
+    background-position: right top; /* Posiciona la imagen al final del pseudo-elemento */
+    transform:none;
+    background-size: cover; /* Ajusta la imagen completa sin recortar. Usa 'cover' si quieres que siempre ocupe el espacio completo */
+    z-index: 1; /* Estará entre el body y el wrapper */
+    pointer-events: none;
+    opacity: 0.8;
+    display: none; /* Oculto por defecto en pantallas pequeñas */
+}
+
+
+/* ========================================= */
+/* ESTILOS DE CONTENIDO */
+/* ========================================= */
+.container {
+    max-width: 1100px; /* Si este .container es diferente de .wrapper, su ancho máximo es 800px */
+    margin: 30px auto;
+    background-color: #e0dfe0;
+    padding: 30px;
+    border-radius: 30px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+h1, h2, h3 {
+    color: var(--heading-color);
+    margin-top: 0;
+    margin-bottom: 15px;
+}
+h1 {
+    font-size: 2.5em;
+}
+h2 {
+    font-size: 2em;
+    border-bottom: 2px solid var(--heading-color);
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+h3 {
+    font-size: 1.5em;
+    color: var(--secondary-heading-color);
+    margin-bottom: 10px;
+}
+.section {
+    margin-bottom: 30px;
+}
+.service {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+    padding-bottom: 5px;
+    border-bottom: 1px dashed #eee;
+}
+.service:last-child {
+    border-bottom: none;
+}
+.price {
+    font-weight: bold;
+    color: var(--price-color);
+}
+.contact-info {
+    margin-top: 20px;
+    text-align: center;
+}
+.contact-info p {
+    margin-bottom: 10px;
+}
+.contact-info a {
+    color: var(--contact-link-color);
+    text-decoration: none;
+    font-weight: bold;
+}
+.contact-info a:hover {
+    text-decoration: underline;
+}
+footer {
+    text-align: center;
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid #ddd;
+    color: #777;
+    font-size: 0.9em;
+}
+
+
+/* ========================================= */
+/* MEDIA QUERIES PARA RESPONSIVIDAD */
+/* ========================================= */
+
+/* Para pantallas medianas y grandes (tablets, laptops) */
+@media (min-width: 768px) {
+    .wrapper {
+        width: 90%; /* Deja espacio para las mariposas */
+        padding: 2rem; /* Aumenta el padding para que se vea bien */
+    }
+
+    .mi-barra-de-navegacion {
+        width: 90%; /* Mismo ancho que el wrapper */
+    }
+
+    body::before,
+    body::after {
+        display: block; /* Muestra las mariposas */
+    }
+}
+
+/* Para pantallas aún más grandes (escritorios grandes) */
+@media (min-width: 1200px) {
+    /* Ajusta las variables si deseas un cambio en el tamaño de las mariposas
+       o el ancho del wrapper en pantallas muy grandes */
+    :root {
+        --wrapper-max-width: 1200px; /* Mantén el ancho máximo si lo deseas */
+        --butterfly-background-width: 400px; /* Puedes hacer las mariposas un poco más grandes aquí */
+    }
+
+    .wrapper,
+    .mi-barra-de-navegacion {
+        max-width: var(--wrapper-max-width);
+    }
+}
+
+/* Media query para adaptar la barra de navegación en móviles si es necesario */
+@media (max-width: 767px) {
+    .mi-barra-de-navegacion {
+        flex-direction: column; /* Apila el logo y los enlaces */
+        align-items: center;
+        padding: 0.8rem;
+    }
+    .mi-barra-de-navegacion ul {
+        flex-wrap: wrap;
+        justify-content: center;
+        margin-top: 0.5rem;
+    }
+    .mi-barra-de-navegacion li {
+        margin: 0.3rem 0.5rem;
+    }
+    .mi-barra-de-navegacion .logo-inicio {
+        margin-right: 0;
+        margin-bottom: 0.5rem;
+    }
+
+
+    
+} 

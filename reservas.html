@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reservar Turno - Kinails.studio</title>
+    <link rel="stylesheet" href="styles.css">
+    
+
+</head>
+<body>
+    <div class="wrapper">
+  <nav class="mi-barra-de-navegacion">
+    <div class="navbar-brand">
+        <a href="index.html" class="logo-inicio">
+            <img src="images/kinails.jpg-removebg-preview.png" alt="Logo de Kinails.studio" height="140">
+        </a>
+    </div>
+    <ul class="nav-links">
+        <li><a href="servicios.html">Servicios</a></li>
+        <li><a href="reservas.html">Reservar Turno</a></li>
+        <li><a href="contacto.html">Donde encontrarnos</a></li>
+    </ul>
+</nav>
+
+    <div class="container">
+        <header>
+            <h1>Reserva tu Turno</h1>
+            
+        </header>
+
+        <section id="reservas-form" class="section">
+            <p>Por favor, completa el siguiente formulario para solicitar tu turno. Nos pondremos en contacto contigo para confirmar la disponibilidad.</p>
+            <form id="formulario-reserva" action="https://formspree.io/f/mzzrdrba" method="POST">
+                <div>
+                    <label for="nombre">Nombre y Apellido:</label>
+                    <input type="text" id="nombre" name="nombre" required>
+                </div>
+                <div>
+                    <label for="whatsapp">Número de WhatsApp:</label>
+                    <input type="tel" id="whatsapp" name="whatsapp" required>
+                </div>
+                <div>
+                    <label for="servicio">Servicio:</label>
+                    <select id="servicio" name="servicio" required>
+                        <option value="">Selecciona un servicio</option>
+                        <option value="Esculpidas Acrílico">Esculpidas Acrílico</option>
+                        <option value="Service de esculpidas">Service de esculpidas</option>
+                        <option value="Capping Nivelador">Capping Nivelador</option>
+                        <option value="Capping Acrílico">Capping Acrílico</option>
+                        <option value="Service Nivelador">Service Nivelador</option>
+                        <option value="Service Acrílico">Service Acrílico</option>
+                        <option value="Esmaltado semipermanente">Esmaltado semipermanente</option>
+                        <option value="Service esmaltado">Service esmaltado</option>
+                        <option value="Uña completa de strass">Uña completa de strass</option>
+                        <option value="Encapsulado">Encapsulado</option>
+                        <option value="Polvo (aurora)">Polvo (aurora)</option>
+                        <option value="Strass">Strass</option>
+                        <option value="Retirado de nuestro salon">Retirado de nuestro salon</option>
+                        <option value="Retirado de otra colega">Retirado de otra colega</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="fecha">Fecha Preferida:</label>
+                    <input type="date" id="fecha" name="fecha" required>
+                </div>
+                <div>
+                    <label for="hora">Hora Preferida:</label>
+                    <select id="hora" name="hora" required>
+                        <option value="">Selecciona una hora</option>
+                        <option value="9:00 - 10:30">9:00 - 10:30</option>
+                        <option value="10:30 - 12:00">10:30 - 12:00</option>
+                        <option value="12:00 - 13:30">12:00 - 13:30</option>
+                        <option value="13:30 - 15:00">13:30 - 15:00</option>
+                        <option value="15:00 - 16:30">15:00 - 16:30</option>
+                        <option value="16:30 - 18:00">16:30 - 18:00</option>
+                        <option value="18:00 - 19:30">18:00 - 19:30</option>
+                        <option value="19:30 - 21:00">19:30 - 21:00</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="comentarios">Comentarios Adicionales (Opcional):</label>
+                    <textarea id="comentarios" name="comentarios"></textarea>
+                </div>
+                <input type="hidden" name="_subject" value="Nueva Solicitud de Reserva desde Kinails.studio">
+                <button type="submit">Solicitar Reserva</button>
+            </form>
+        </section>
+
+        <footer>
+            <p>&copy; 2025 Kinails.studio - Todos los derechos reservados.</p>
+        </footer>
+    </div>
+</div>
+
+
+
+    
+</body>
+</html>
