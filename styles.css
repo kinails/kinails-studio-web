@@ -382,7 +382,163 @@ footer {
         margin-right: 0;
         margin-bottom: 0.5rem;
     }
+body {
+        overflow-x: hidden; /* Evita cualquier desplazamiento horizontal no deseado en el body */
+    }
 
+    .wrapper {
+        width: 100%; /* Asegura que el contenedor principal ocupe todo el ancho */
+        padding: 0 10px; /* Reduce el padding para móviles */
+        box-sizing: border-box; /* Incluye el padding en el ancho total */
+    }
+
+    .container { /* Tu contenedor principal de contenido */
+        padding: 10px; /* Un poco de padding interno */
+        width: 100%; /* Asegura que ocupe todo el ancho disponible */
+        box-sizing: border-box;
+    }
+
+    header {
+        padding: 15px 0; /* Ajusta el padding del header */
+    }
+
+    header h1 { /* "Bienvenido a Kinails.studio" */
+        font-size: 1.8em; /* Tamaño de fuente más adecuado para móviles */
+        text-align: center;
+        word-wrap: break-word; /* Permite que palabras largas se rompan en varias líneas */
+        margin-bottom: 10px;
+    }
+
+    header p { /* "Embellecemos tus uñas..." */
+        font-size: 0.9em;
+        text-align: center;
+        padding: 0 10px;
+        margin-bottom: 20px;
+    }
+
+    h2 { /* Títulos de sección como "Nuestros Diseños Inspiradores", "Descubre nuestros servicios" */
+        font-size: 1.6em;
+        text-align: center;
+        margin-top: 25px;
+        margin-bottom: 15px;
+        word-wrap: break-word;
+    }
+    
+    .carousel-section { /* Contenedor de la sección del carrusel */
+        padding: 10px 0; /* Ajusta el padding vertical si es necesario */
+    }
+
+    .carousel-container {
+        width: 100%; /* El contenedor del carrusel ocupa todo el ancho */
+        overflow-x: scroll; /* ¡CRUCIAL! Permite el desplazamiento horizontal con el dedo */
+        -webkit-overflow-scrolling: touch; /* Mejora el desplazamiento en iOS */
+        white-space: nowrap; /* Evita que los ítems del carrusel se salten de línea */
+        padding-bottom: 10px; /* Espacio para la barra de desplazamiento si aparece */
+    }
+
+    .carousel-slide-wrapper { /* Contenedor de todos los carousel-item */
+        display: inline-block; /* Asegura que se mantenga en línea con overflow-x */
+    }
+
+    .carousel-item {
+        display: inline-block; /* Mantiene cada imagen del carrusel en una sola línea */
+        width: 80%; /* Cada ítem ocupa un 80% del ancho del contenedor para ver una parte del siguiente */
+        max-width: 300px; /* O un ancho máximo si quieres que no sea demasiado grande en tablets */
+        margin-right: 15px; /* Espacio entre las imágenes del carrusel */
+        vertical-align: top; /* Alinea los ítems en la parte superior */
+        box-sizing: border-box; /* Incluye padding en el ancho */
+    }
+
+    .carousel-item img {
+        max-width: 100%; /* La imagen no se desborda de su contenedor */
+        height: auto; /* Mantiene la proporción original */
+        display: block; /* Elimina posibles espacios extra debajo de la imagen */
+        border-radius: 10px; /* Si tienes bordes redondeados */
+    }
+
+    .slide-caption {
+        white-space: normal; /* Permite que el texto de la leyenda salte de línea */
+        font-size: 0.85em;
+        text-align: center;
+        margin-top: 5px;
+    }
+
+    .section { /* Para las secciones "Descubre nuestros servicios", "Reserva tu turno", "Contacto" */
+        padding: 20px 15px; /* Ajusta el padding para móviles */
+        margin-bottom: 20px; /* Espacio entre secciones */
+    }
+
+    .section p { /* Párrafos dentro de estas secciones */
+        font-size: 0.9em;
+        text-align: center;
+        margin-bottom: 15px;
+        padding: 0 5px;
+    }
+
+    .section .button { /* Enlaces/botones "Ver Servicios", "Reservar Turno" */
+        display: block; /* Para que ocupe todo el ancho y esté centrado */
+        width: 80%; /* Un porcentaje del ancho para que no sea demasiado largo */
+        max-width: 250px; /* Limita el ancho máximo del botón */
+        margin: 15px auto; /* Centra el botón horizontalmente */
+        padding: 12px 15px;
+        font-size: 1em;
+        text-align: center;
+        text-decoration: none; /* Si es un enlace con estilo de botón */
+        /* Asegúrate de que el color de fondo y texto sean legibles */
+    }
+
+    .contact-info { /* Contenedor de los enlaces de contacto */
+        display: flex;
+        flex-direction: column; /* Apila los enlaces de contacto verticalmente */
+        align-items: center; /* Centra los enlaces */
+        gap: 10px; /* Espacio entre los enlaces */
+        margin-top: 20px;
+    }
+
+    .contact-info .social-link a {
+        font-size: 1em;
+        padding: 8px 15px;
+        border: 1px solid #ccc; /* Un borde para distinguirlo */
+        border-radius: 5px;
+        text-decoration: none;
+        color: #333; /* Color de texto */
+        display: flex; /* Para alinear el icono y el texto */
+        align-items: center;
+    }
+
+    .contact-info .social-link i {
+        margin-right: 8px; /* Espacio entre el icono y el texto */
+    }
+
+    footer {
+        padding: 15px;
+        font-size: 0.75em; /* Tamaño de fuente más pequeño para el footer */
+        text-align: center;
+        margin-top: 30px;
+    }
+
+    /* Ocultar las mariposas de fondo en móviles para mejor rendimiento y evitar desbordes */
+    body::before,
+    body::after {
+        display: none !important; /* Asegura que las mariposas no se muestren en móviles */
+    }
+}
+
+/* Puedes añadir una Media Query para pantallas aún más pequeñas si es necesario (ej. 320px de ancho) */
+@media (max-width: 480px) {
+    header h1 {
+        font-size: 1.5em;
+    }
+    h2 {
+        font-size: 1.4em;
+    }
+    .carousel-item {
+        width: 90%; /* Hace que las imágenes del carrusel sean un poco más grandes */
+    }
+    .section .button {
+        width: 90%;
+    }
+}
 
     
-} 
+ 
